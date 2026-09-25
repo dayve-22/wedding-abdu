@@ -1,0 +1,531 @@
+@import "tailwindcss";
+
+/* ─────────────────────────────────────────────
+   WEDDING SITE — Golden Touch + Peach Theme
+   Design System v2.0
+───────────────────────────────────────────── */
+
+@layer base {
+  :root {
+    /* ── Core Palette ── */
+    --peach:           #F2A07B;
+    --peach-light:     #FDE8DA;
+    --peach-blush:     #FADADD;
+    --champagne:       #F5E6C8;
+    --champagne-deep:  #E8D0A0;
+    --ivory:           #FAF6EF;
+    --ivory-warm:      #FDF8F0;
+    --cream:           #FBF5E6;
+
+    /* ── Gold Palette ── */
+    --gold:            #C9A84C;
+    --gold-light:      #DFC06A;
+    --gold-deep:       #9C7A3C;
+    --gold-pale:       #EDD98A;
+    --gold-metallic:   linear-gradient(135deg, #DFC06A 0%, #C9A84C 40%, #9C7A3C 100%);
+
+    /* ── Brown & Earth Tones ── */
+    --brown-dark:      #3D2B1F;
+    --brown-mid:       #6B4C35;
+    --brown-light:     #A07850;
+
+    /* ── Neutrals ── */
+    --white-warm:      #FEFCF8;
+    --text-primary:    #3D2B1F;
+    --text-secondary:  #7A5C42;
+    --text-muted:      #A89280;
+
+    /* ── Shadows ── */
+    --shadow-soft:     0 8px 32px rgba(61, 43, 31, 0.08), 0 2px 8px rgba(61, 43, 31, 0.04);
+    --shadow-gold:     0 4px 20px rgba(201, 168, 76, 0.25), 0 1px 4px rgba(201, 168, 76, 0.15);
+    --shadow-luxury:   0 20px 60px rgba(61, 43, 31, 0.12), 0 8px 24px rgba(61, 43, 31, 0.06);
+    --shadow-peach:    0 8px 30px rgba(242, 160, 123, 0.18);
+
+    /* ── Border ── */
+    --border-gold:     rgba(201, 168, 76, 0.35);
+    --border-gold-strong: rgba(201, 168, 76, 0.6);
+    --border-peach:    rgba(242, 160, 123, 0.3);
+    --border-champagne: rgba(232, 208, 160, 0.5);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+
+  body {
+    background-color: var(--ivory);
+    color: var(--text-primary);
+    font-family: 'Montserrat', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* ─────────────────────────────────────────────
+   CUSTOM FONT HELPERS
+───────────────────────────────────────────── */
+
+.font-cinzel {
+  font-family: 'Cinzel', serif;
+}
+.font-cormorant {
+  font-family: 'Cormorant Garamond', serif;
+}
+.font-script {
+  font-family: 'Great Vibes', cursive;
+}
+.font-montserrat {
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* ─────────────────────────────────────────────
+   KEYFRAME ANIMATIONS
+───────────────────────────────────────────── */
+
+@keyframes float-gentle {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33%       { transform: translateY(-12px) rotate(3deg); }
+  66%       { transform: translateY(-6px) rotate(-2deg); }
+}
+
+@keyframes float-gentle-reverse {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33%       { transform: translateY(-8px) rotate(-3deg); }
+  66%       { transform: translateY(-14px) rotate(2deg); }
+}
+
+@keyframes petal-drift {
+  0%   { transform: translateY(0px) translateX(0px) rotate(0deg); opacity: 0.7; }
+  25%  { transform: translateY(-18px) translateX(6px) rotate(8deg); opacity: 0.9; }
+  50%  { transform: translateY(-10px) translateX(-4px) rotate(4deg); opacity: 0.8; }
+  75%  { transform: translateY(-20px) translateX(8px) rotate(-5deg); opacity: 0.9; }
+  100% { transform: translateY(0px) translateX(0px) rotate(0deg); opacity: 0.7; }
+}
+
+@keyframes shimmer-gold {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-down {
+  from { opacity: 0; transform: translateY(-24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.9); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes pulse-glow-gold {
+  0%, 100% {
+    box-shadow: 0 4px 20px rgba(201, 168, 76, 0.3), 0 0 0 0 rgba(201, 168, 76, 0.35);
+  }
+  50% {
+    box-shadow: 0 4px 20px rgba(201, 168, 76, 0.3), 0 0 0 12px rgba(201, 168, 76, 0);
+  }
+}
+
+@keyframes rotate-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes eq-bounce-1 {
+  0%, 100% { height: 6px; }
+  50%       { height: 16px; }
+}
+@keyframes eq-bounce-2 {
+  0%, 100% { height: 10px; }
+  30%       { height: 4px; }
+  70%       { height: 18px; }
+}
+@keyframes eq-bounce-3 {
+  0%, 100% { height: 14px; }
+  40%       { height: 6px; }
+  80%       { height: 20px; }
+}
+
+/* ─────────────────────────────────────────────
+   UTILITY CLASSES
+───────────────────────────────────────────── */
+
+/* Animated floating floral */
+.floral-float {
+  animation: float-gentle 7s ease-in-out infinite;
+}
+.floral-float-slow {
+  animation: float-gentle 11s ease-in-out infinite;
+}
+.floral-float-reverse {
+  animation: float-gentle-reverse 9s ease-in-out infinite;
+}
+.petal-drift {
+  animation: petal-drift 8s ease-in-out infinite;
+}
+
+/* Gold shimmer text */
+.gold-shimmer-text {
+  background: linear-gradient(
+    90deg,
+    var(--gold-deep) 0%,
+    var(--gold-pale) 30%,
+    var(--gold) 50%,
+    var(--gold-pale) 70%,
+    var(--gold-deep) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer-gold 4s linear infinite;
+}
+
+/* Entrance animations */
+.animate-fade-up {
+  animation: fade-up 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+.animate-fade-down {
+  animation: fade-down 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+.animate-scale-in {
+  animation: scale-in 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+.animate-fade-in {
+  animation: fade-up 0.6s ease both;
+}
+
+/* ─────────────────────────────────────────────
+   SCALLOPED BADGE — Peach/Gold Theme
+───────────────────────────────────────────── */
+
+.scalloped-badge {
+  background-color: var(--ivory-warm);
+  border: 1.5px solid var(--border-gold);
+  border-radius: 40px 10px 40px 10px / 10px 40px 10px 40px;
+  box-shadow: var(--shadow-soft), 0 0 0 4px rgba(201, 168, 76, 0.04);
+  position: relative;
+}
+
+.scalloped-badge::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border: 1px dashed rgba(201, 168, 76, 0.35);
+  border-radius: 42px 12px 42px 12px / 12px 42px 12px 42px;
+  pointer-events: none;
+}
+
+/* ─────────────────────────────────────────────
+   LUXURY CARD
+───────────────────────────────────────────── */
+
+.card-luxury {
+  background: var(--ivory-warm);
+  border: 1px solid var(--border-gold);
+  border-radius: 20px;
+  box-shadow: var(--shadow-luxury);
+  position: relative;
+  overflow: hidden;
+}
+
+.card-luxury::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    135deg,
+    rgba(201, 168, 76, 0.05) 0%,
+    transparent 50%,
+    rgba(242, 160, 123, 0.03) 100%
+  );
+  pointer-events: none;
+}
+
+.card-luxury-inner {
+  border: 1px solid var(--border-champagne);
+  border-radius: 14px;
+  padding: 1.5rem;
+}
+
+/* ─────────────────────────────────────────────
+   GOLD BUTTON
+───────────────────────────────────────────── */
+
+.btn-gold {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 24px;
+  background: linear-gradient(135deg, #DFC06A 0%, #C9A84C 50%, #B8933C 100%);
+  border: none;
+  border-radius: 50px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--brown-dark);
+  cursor: pointer;
+  box-shadow: var(--shadow-gold);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-gold::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.25) 50%, transparent 100%);
+  transform: translateX(-100%);
+  transition: transform 0.5s ease;
+}
+
+.btn-gold:hover::after {
+  transform: translateX(100%);
+}
+
+.btn-gold:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(201, 168, 76, 0.4), 0 2px 8px rgba(201, 168, 76, 0.25);
+}
+
+/* ─────────────────────────────────────────────
+   PILL LOCATION BUTTON (updated to gold)
+───────────────────────────────────────────── */
+
+.btn-pill-location {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 20px;
+  border: 1.5px solid var(--border-gold-strong);
+  border-radius: 50px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--brown-dark);
+  background: linear-gradient(135deg, rgba(245, 230, 200, 0.8), rgba(250, 246, 239, 0.9));
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  box-shadow: var(--shadow-gold);
+}
+
+.btn-pill-location:hover {
+  background: linear-gradient(135deg, #DFC06A, #C9A84C);
+  color: var(--brown-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(201, 168, 76, 0.35);
+}
+
+/* ─────────────────────────────────────────────
+   ENVELOPE — Champagne Gold Theme
+───────────────────────────────────────────── */
+
+.envelope-wrapper {
+  perspective: 1000px;
+  width: 100%;
+}
+
+.envelope {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  height: 260px;
+  background: linear-gradient(145deg, #EDD8A8 0%, #D4B87A 100%);
+  border-radius: 10px;
+  box-shadow: 0 24px 60px rgba(61, 43, 31, 0.25), 0 8px 20px rgba(61, 43, 31, 0.1);
+  margin: 0 auto;
+  transition: transform 0.6s ease;
+  border: 1px solid rgba(201, 168, 76, 0.5);
+}
+
+.envelope-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  border-left: 200px solid transparent;
+  border-right: 200px solid transparent;
+  border-top: 145px solid #C9A84C;
+  transform-origin: top center;
+  transition: transform 0.7s ease-in-out;
+  z-index: 5;
+  filter: drop-shadow(0 4px 8px rgba(61, 43, 31, 0.15));
+}
+
+.envelope.open .envelope-flap {
+  transform: rotateX(180deg);
+  z-index: 1;
+}
+
+.wax-seal {
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 60px;
+  background: radial-gradient(circle at 35% 35%, #F0D58C 0%, #C9A84C 50%, #9C7A3C 100%);
+  border-radius: 50%;
+  box-shadow: 0 4px 20px rgba(156, 122, 60, 0.4), inset 0 2px 4px rgba(255, 255, 255, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s ease;
+  animation: pulse-glow-gold 2.5s infinite ease-in-out;
+}
+
+.wax-seal:hover {
+  transform: translateX(-50%) scale(1.12);
+}
+
+/* ─────────────────────────────────────────────
+   GOLD DIVIDER LINE
+───────────────────────────────────────────── */
+
+.gold-divider {
+  width: 100%;
+  height: 1px;
+  background: radial-gradient(
+    ellipse at center,
+    var(--gold) 0%,
+    rgba(201, 168, 76, 0.4) 50%,
+    transparent 100%
+  );
+  margin: 0 auto;
+  position: relative;
+}
+
+.gold-divider::before,
+.gold-divider::after {
+  content: '✦';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--gold);
+  font-size: 0.6rem;
+  opacity: 0.7;
+}
+
+.gold-divider::before { left: calc(50% - 60px); }
+.gold-divider::after  { left: calc(50% + 52px); }
+
+/* ─────────────────────────────────────────────
+   SECTION LABEL
+───────────────────────────────────────────── */
+
+.section-label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.35em;
+  color: var(--gold-deep);
+  text-transform: uppercase;
+}
+
+/* ─────────────────────────────────────────────
+   COUNTDOWN NUMBER BOX
+───────────────────────────────────────────── */
+
+.countdown-box {
+  background: linear-gradient(145deg, var(--ivory-warm), var(--champagne));
+  border: 1px solid var(--border-gold);
+  border-radius: 16px;
+  box-shadow: var(--shadow-soft), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  padding: 1.25rem 0.75rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.countdown-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+/* ─────────────────────────────────────────────
+   MUSIC EQUALIZER
+───────────────────────────────────────────── */
+
+.eq-bar-1 { animation: eq-bounce-1 0.8s ease-in-out infinite; }
+.eq-bar-2 { animation: eq-bounce-2 0.6s ease-in-out infinite 0.1s; }
+.eq-bar-3 { animation: eq-bounce-3 0.7s ease-in-out infinite 0.2s; }
+
+/* ─────────────────────────────────────────────
+   CUSTOM SCROLLBAR
+───────────────────────────────────────────── */
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--champagne);
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--gold), var(--gold-deep));
+  border-radius: 3px;
+}
+
+/* ─────────────────────────────────────────────
+   GLASS CARD (RSVP + event cards)
+───────────────────────────────────────────── */
+
+.glass-luxury {
+  background: rgba(250, 246, 239, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-gold);
+  box-shadow: var(--shadow-luxury);
+}
+
+/* ─────────────────────────────────────────────
+   FORM INPUTS (Peach/Gold focus)
+───────────────────────────────────────────── */
+
+.input-luxury {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1.5px solid var(--border-champagne);
+  border-radius: 12px;
+  background: var(--ivory-warm);
+  color: var(--text-primary);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.85rem;
+  outline: none;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.input-luxury:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.15);
+}
+
+.input-luxury::placeholder {
+  color: var(--text-muted);
+}
