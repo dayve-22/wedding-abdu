@@ -69,7 +69,7 @@ export default function HeaderBadge() {
           className="font-cormorant font-semibold text-lg sm:text-xl tracking-wide"
           style={{ color: 'var(--brown-dark)' }}
         >
-          Mr. Ahammed &amp; Mrs. Fathima
+          Late Mr. Ahammed &amp; Mrs. Fathima
         </p>
         <p
           className="section-label"

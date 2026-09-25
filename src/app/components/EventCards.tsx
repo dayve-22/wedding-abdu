@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { MapPin, Clock, Sparkles, Heart } from 'lucide-react';
+import Image from 'next/image';
 import FloralDecorations from './FloralDecorations';
 
 export default function EventCards() {
@@ -50,31 +51,41 @@ export default function EventCards() {
         >
           <div className="h-1 w-full" style={{ background: 'linear-gradient(90deg, var(--gold-deep), var(--gold-light), var(--gold-deep))' }} />
 
-          <div className="flex flex-col items-center pt-8 pb-6 px-4 relative">
+          <div className="flex flex-col items-center pt-6 pb-6 px-4 relative">
             <FloralDecorations position="top-right" size="sm" opacity={0.35} />
 
-            {/* Elegant Monogram Ornament Badge (No Photo) */}
+            {/* Framed Couple Photo */}
             <motion.div
               className="relative mb-6"
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ rotate: 0, scale: 1.02 }}
+              style={{ rotate: -1.2 }}
               transition={{ duration: 0.3 }}
             >
               <div
-                className="w-24 h-24 rounded-full flex flex-col items-center justify-center relative shadow-lg"
+                className="bg-white p-2.5 pb-3.5 rounded-xl shadow-lg"
                 style={{
-                  background: 'linear-gradient(135deg, #FAF6EF 0%, #F5E6C8 50%, #EAD4B0 100%)',
-                  border: '2px solid rgba(201, 168, 76, 0.7)',
-                  boxShadow: '0 8px 25px rgba(201, 168, 76, 0.25)',
+                  border: '1.5px solid rgba(201, 168, 76, 0.45)',
+                  boxShadow: '0 12px 35px rgba(61, 43, 31, 0.15)',
                 }}
               >
-                <div className="absolute inset-1.5 rounded-full border border-[#C9A84C]/35 pointer-events-none" />
-                <Sparkles className="w-4 h-4 text-[#C9A84C] mb-0.5" />
-                <span className="font-cormorant font-bold text-xl text-[#3D2817] tracking-wider leading-none">
-                  A &amp; H
-                </span>
-                <span className="text-[0.45rem] font-montserrat uppercase tracking-[0.2em] text-[#9C7A3C] font-bold mt-1">
-                  Union
-                </span>
+                <div
+                  className="relative overflow-hidden rounded-lg aspect-[16/9.5]"
+                  style={{ width: 'clamp(240px, 68vw, 360px)' }}
+                >
+                  <Image
+                    src="/newabdu.png"
+                    alt="Abdulla & Hiba Fathima - Save The Date"
+                    fill
+                    className="object-cover"
+                    priority
+                  />
+                </div>
+                <p
+                  className="font-script mt-2 text-center text-lg sm:text-xl"
+                  style={{ color: 'var(--brown-dark)' }}
+                >
+                  Save The Date
+                </p>
               </div>
             </motion.div>
 

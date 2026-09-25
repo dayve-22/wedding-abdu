@@ -3,18 +3,22 @@ import "./globals.css";
 import DeveloperCreditWidget from "./components/DeveloperCreditWidget";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://abduandhiba.vercel.app"),
   title: "Abdulla & Hiba Fathima | Wedding Invitation",
   description: "Wedding of Abdulla & Hiba Fathima — Sunday, September 27, 2026 · Pookolathur Mahallu Auditorium, Pulpatta",
   openGraph: {
     title: "Abdulla & Hiba Fathima | Wedding Invitation",
     description: "Wedding of Abdulla & Hiba Fathima — Sunday, September 27, 2026 · Pookolathur Mahallu Auditorium, Pulpatta",
+    url: "https://abduandhiba.vercel.app",
     siteName: "Abdulla & Hiba Fathima Wedding",
     type: "website",
+    locale: "en_US",
     images: [
       {
-        url: "/newabdu.png",
-        width: 1731,
-        height: 909,
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        type: "image/jpeg",
         alt: "Abdulla & Hiba Fathima Wedding Invitation",
       },
     ],
@@ -23,7 +27,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Abdulla & Hiba Fathima | Wedding Invitation",
     description: "Wedding of Abdulla & Hiba Fathima — Sunday, September 27, 2026 · Pookolathur Mahallu Auditorium, Pulpatta",
-    images: ["/newabdu.png"],
+    images: ["/og-image.jpg"],
   },
   icons: {
     icon: [

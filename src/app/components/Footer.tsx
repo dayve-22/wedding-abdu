@@ -364,7 +364,7 @@ export default function Footer() {
 
       {/* Footer copyright */}
       <p className="mt-8 section-label text-[0.56rem] tracking-[0.22em] text-[#7A624E]/60 uppercase">
-        With Gratitude &bull; Ahammed, Fathima &amp; Family &bull; Pulikkottil (H)
+        With Gratitude &bull; Late Ahammed, Fathima &amp; Family &bull; Pulikkottil (H)
       </p>
     </motion.footer>
   );
